@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar el mensaje en letras verdes
     document.body.innerHTML =
       '<h1 style="color: lime;">Sigue Al Conejo Blanco</h1>';
-  }, 3000); // Cambia este valor (en milisegundos) para ajustar el tiempo de espera
+  }, 9000); // Cambia este valor (en milisegundos) para ajustar el tiempo de espera
 });
 
 document.addEventListener("DOMContentLoaded", function () {
