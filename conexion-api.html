@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conexión API - Sigue al Conejo Blanco</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/estilos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Conexión API</a>
+        <ul class="navbar-nav mx-auto">
+          <!-- Utilizamos mx-auto para centrar horizontalmente los elementos -->
+          <!-- Otros elementos del menú -->
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://www.facebook.com/ciccioromero"
+              target="_blank"
+            >
+              <i class="fab fa-facebook-f"></i>
+              <!-- Ícono de Facebook -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://www.linkedin.com/in/ciccioromero"
+              target="_blank"
+            >
+              <i class="fab fa-linkedin-in"></i>
+              <!-- Ícono de LinkedIn -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://www.twitter.com/violinero2022"
+              target="_blank"
+            >
+              <i class="fab fa-twitter"></i>
+              <!-- Ícono de Twitter -->
+            </a>
+          </li>
+        </ul>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="acerca.html">Acerca</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="registro.html">Registro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="conexion-api.html">Conexión API</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Conexión API</h1>
+      </div>
+
+      <div class="api-container">
+        <h2>Información del Usuario</h2>
+        <div id="user-info">
+          <!-- Información del usuario se mostrará aquí -->
+        </div>
+        <button id="generate-user" class="btn btn-primary">Generar Usuario</button>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#generate-user').click(function() {
+          // Hacer una solicitud AJAX a la API RandomUser
+          $.ajax({
+            url: 'https://randomuser.me/api/',
+            dataType: 'json',
+            success: function(data) {
+              // Obtener el primer usuario de la lista
+              const user = data.results[0];
+
+              // Crear el contenido HTML para mostrar la información del usuario
+              const userInfoHtml = `
+                <p><strong>Nombre:</strong> ${user.name.first} ${user.name.last}</p>
+                <p><strong>Género:</strong> ${user.gender}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <img src="${user.picture.large}" alt="Foto de ${user.name.first}">
+              `;
+
+              // Agregar el contenido HTML al contenedor de información del usuario
+              $('#user-info').html(userInfoHtml);
+            },
+            error: function(xhr, status, error) {
+              console.error('Error al obtener usuario aleatorio:', error);
+              // Mostrar un mensaje de error
+              $('#user-info').html('<p>Error al obtener usuario aleatorio.</p>');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
