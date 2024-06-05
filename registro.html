@@ -81,6 +81,9 @@
             <li class="nav-item">
               <a class="nav-link" href="registro.html">Registro</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="conexion-api.html">Conexión API</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -139,6 +142,11 @@
               $("#register-error-message").html(
                 "<p>Usuario generado exitosamente.</p>"
               );
+
+              // Redirigir a la página de inicio después de un breve retraso
+              setTimeout(function () {
+                window.location.href = "index.html";
+              }, 2000); // Espera 2 segundos antes de redirigir
             },
             error: function (xhr, status, error) {
               console.error("Error al obtener usuario aleatorio:", error);
@@ -151,6 +159,5 @@
         });
       });
     </script>
-    <!-- Enlace al archivo JavaScript de registro -->
   </body>
 </html>
