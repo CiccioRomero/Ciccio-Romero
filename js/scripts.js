@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  var mensaje = "Sigue Al Conejo Blanco";
+  var mensaje = "Música Para Crear";
   var mensajeTipeado = "";
   var cursor = document.getElementById("cursor");
 
